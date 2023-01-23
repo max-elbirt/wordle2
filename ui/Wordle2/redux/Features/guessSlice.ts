@@ -1,11 +1,11 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 
 export interface GuessState {
-    guess: string
+    currentGuess: string
 }
 
 export const initialGuessState: GuessState = {
-    guess : ''
+    currentGuess : ''
 }
 
 const guessSlice = createSlice({
@@ -13,7 +13,7 @@ const guessSlice = createSlice({
     name: 'guess',
     reducers: {
         addLetter(state, action: PayloadAction<string>){
-            state.guess += action.payload;
+            state.currentGuess += action.payload;
         }
     }
 })

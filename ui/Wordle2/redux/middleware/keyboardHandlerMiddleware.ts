@@ -9,4 +9,4 @@ export const keyboardClickFlow: Middleware = (store: MiddlewareAPI) => (next: Di
        }
     }
 }
-const keyboardClicked = createAction<string>('keyboardHandler/keyboardClicked')
+const keyboardClicked = createAction<string>('keyboardHandler/keyboardClicked');

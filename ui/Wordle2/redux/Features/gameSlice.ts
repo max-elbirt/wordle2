@@ -22,10 +22,15 @@ const gameSlice = createSlice({
     initialState,
     name: 'Game',
     reducers: {
-        setStatus(state, action: PayloadAction<'IN_PROGRESS' | 'ENDED' | 'PENDING'| 'ERROR'>){
+        setStatus(state, action: PayloadAction<statusses>){
             state.status = action.payload;
         }
     }
 })
-
+export enum statusses {
+    in_progress= 'IN_PROGRESS',
+    ended = 'ENDED',
+    pending = 'PENDING',
+    error = 'ERROR'
+}
 export default gameSlice.reducer;
