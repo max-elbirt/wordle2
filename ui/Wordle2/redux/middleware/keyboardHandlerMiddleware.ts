@@ -1,12 +1,18 @@
 import {createAction, Dispatch, Middleware, MiddlewareAPI, PayloadAction} from "@reduxjs/toolkit";
-import {addLetter} from "../Features/guessSlice";
-const qwerty = '/^[A-Z]$/';
+import {setCurrentEvaluations} from "../Features/evalSlice";
+
+const qwerty = /^[A-Z]$/;
 
 export const keyboardClickFlow: Middleware = (store: MiddlewareAPI) => (next: Dispatch) => (action: PayloadAction<string>) => {
+    next(action);
     if (action.type === keyboardClicked.type) {
-       if (action.payload.match(qwerty) &&  store.getState().game.status === 'IN_PROGRESS') {
-           store.dispatch(addLetter);
-       }
+        const capitalLetter = action.payload.toUpperCase()
+        console.log(capitalLetter)
+        if (qwerty.test(capitalLetter) && store.getState().game.status === 'IN_PROGRESS') {
+            console.log('entered the final level', action.payload.match(qwerty));
+            store.dispatch(setCurrentEvaluations(action.payload));
+        }
     }
 }
-const keyboardClicked = createAction<string>('keyboardHandler/keyboardClicked');
+export const keyboardClicked = createAction<string>('keyboardHandler/keyboardClicked');
+export const keyboardMiddleware = [keyboardClickFlow];

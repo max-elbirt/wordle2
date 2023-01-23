@@ -1,4 +1,4 @@
-import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+import {Action, createSlice, PayloadAction} from "@reduxjs/toolkit";
 
 export interface GameState {
     settings: {
@@ -14,7 +14,7 @@ export const initialState: GameState ={
         numberOfGuesses: 5,
         numberOfLettersInGuess: 5,
     },
-    status: "PENDING",
+    status: "IN_PROGRESS",
     sessionID: '0',
     currentRowIndex: 0,
 }
@@ -24,6 +24,9 @@ const gameSlice = createSlice({
     reducers: {
         setStatus(state, action: PayloadAction<statusses>){
             state.status = action.payload;
+        },
+        increaseRowIndex(state, action: Action) {
+            state.currentRowIndex += 1;
         }
     }
 })
@@ -33,4 +36,7 @@ export enum statusses {
     pending = 'PENDING',
     error = 'ERROR'
 }
+const actions = gameSlice.actions;
+
 export default gameSlice.reducer;
+export const {setStatus, increaseRowIndex} = actions;

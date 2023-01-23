@@ -1,11 +1,7 @@
 import {Router, BrowserRouter, createBrowserRouter} from "react-router-dom";
 import {Provider} from "react-redux";
 import {Welcome} from "../Pages/Welcome";
-
-
-function Game() {
-    return null;
-}
+import Game from "../Pages/Game";
 
 export const router = createBrowserRouter ([
     {
@@ -13,7 +9,7 @@ export const router = createBrowserRouter ([
         element: <Welcome />
     },
     {
-        path: '/',
+        path: '/game',
         element: <Game />
     }
 ])
