@@ -21,7 +21,7 @@ export const evalRowFlow : Middleware = (store) => (next) => (action) => {
     if (action.type === endOfRow.type){
     store.dispatch(clearCurrentEvaluations());
     store.dispatch(setStatus(statusses.pending));
-    store.dispatch(increaseRowIndex())};
+    store.dispatch(increaseRowIndex())}
 }
 
 export const evalMiddleware = [evalRowFlow, newEvalFlow];

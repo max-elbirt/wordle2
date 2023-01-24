@@ -1,13 +1,26 @@
 // @ts-ignore
 import express, {Request, Response} from "express";
+import * as bodyParser from "body-parser";
+import {evaluateWord} from "./evaluateWord";
+
 
 const port = 5000;
 
-const app = express();
+const word = 'MELON';
 
-app.get((req:Request, res:Response)=>{});
+export const app = express();
 
-app.porst((req:Request, res:Response)=>{});
-app.listen(port, ()=>{
+app.use(bodyParser)
+
+
+app.get((req: Request, res: Response) => {
+});
+
+app.post('/send', (req: Request, res: Response) => {
+    const result = bodyParser.json(req.body);
+    const answer = evaluateWord(word, req.body);
+    res.send(answer);
+});
+app.listen(port, () => {
     console.log(`server is listening on port ${port}`);
 });
