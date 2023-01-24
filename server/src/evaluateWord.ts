@@ -1,7 +1,7 @@
 import {evalI} from '../../ui/Wordle2/redux/Features/evalSlice'
 
-export const evaluateWord = (word: string, element: evalI[]) => {
-    element.map((element) => {
+export const evaluateWord = (word: string, e: evalI[]) => {
+    return e.map((element) => {
         if (element.letter === word[element.index]) {
             element.correctness = 'correctPlace';
             element.status = 'checked';
@@ -12,6 +12,5 @@ export const evaluateWord = (word: string, element: evalI[]) => {
             element.correctness = 'notInTargetWord';
             element.status = 'checked';
         }
-        return element;
     })}
 

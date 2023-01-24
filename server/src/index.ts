@@ -17,9 +17,10 @@ app.get('/', (req:Request, res:Response) => {
 })
 
 app.post('/send', (req: Request, res: Response) => {
-    const result = req.body;
-    const answer = evaluateWord(word, req.body);
-    res.send(answer);
+    // const result = req.body;
+    // const answer = evaluateWord(word, req.body);
+    // res.send(answer);
+    res.send('yo')
 });
 app.listen(port, () => {
     console.log(`server is listening on port ${port}`);

@@ -7,4 +7,9 @@ describe('should return eval checked', ()=> {
             .post('/send')
             .expect(200);
     })
+    it("should return hello ", () => {
+        return request(app)
+            .get('/')
+            .expect(200);
+    })
 })
