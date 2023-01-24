@@ -1,11 +1,37 @@
 import {app} from '../index'
 import request from 'supertest';
+import { evalI } from '../../../ui/Wordle2/redux/Features/evalSlice';
 
-describe('should return eval checked', ()=> {
-    it("should return eval checked", ()=> {
+const mockEvalArr:any = [{letter: 'J', index: 1, correctness: null, status: 'unchecked'}, {
+    letter: 'M',
+    index: 0,
+    correctness: null,
+    status: 'unchecked'
+}, {letter: 'J', index: 2, correctness: null, status: 'unchecked'}, {
+    letter: 'L',
+    index: 1,
+    correctness: null,
+    status: 'unchecked'
+}];
+const mockAnswer: evalI[] = [{letter: 'J', index: 1, correctness: 'notInTargetWord', status: 'checked'}, {
+    letter: 'M',
+    index: 0,
+    correctness: 'correctPlace',
+    status: 'checked'
+}, {letter: 'J', index: 2, correctness: 'notInTargetWord', status: 'checked'}, {
+    letter: 'L',
+    index: 1,
+    correctness: 'incorrectPlace',
+    status: 'checked'
+}];
+describe('should return eval checked', () => {
+    it("should return eval checked", () => {
         return request(app)
             .post('/send')
-            .expect(200);
+            .send(mockEvalArr)
+            .expect(200)
+            .expect(mockAnswer)
+
     })
     it("should return hello ", () => {
         return request(app)

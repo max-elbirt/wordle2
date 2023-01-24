@@ -1,5 +1,6 @@
 import {evaluateWord} from "../evaluateWord";
 import {evalI} from '../../../ui/Wordle2/redux/Features/evalSlice'
+import exp from "constants";
 
 const mockEvalArr: evalI[] = [{letter: 'J', index: 1, correctness: null, status: 'unchecked'}, {
     letter: 'M',
@@ -27,7 +28,7 @@ const mockAnswer: evalI[] = [{letter: 'J', index: 1, correctness: 'notInTargetWo
 
 describe('should return eval array', () => {
     it('should return eval arr', () => {
-        expect(evaluateWord('MELON', mockEvalArr))
-            .toEqual(mockAnswer)
+        const result = evaluateWord('MELON', mockEvalArr);
+        expect(result).toEqual(mockAnswer);
     })
 })
