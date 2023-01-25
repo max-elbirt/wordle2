@@ -2,16 +2,16 @@ import { Action, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { EvaluatedGuess } from '../../../../../commonTypes/EvaluatedGuess';
 import { NonEvaluatedGuess } from '../../../../../commonTypes/NonEvaluatedGuess';
 
-interface EvaluationsState {
+interface GuessesState {
     evaluatedGuesses: EvaluatedGuess[];
     nonEvaluatedGuesses: NonEvaluatedGuess[];
 }
-const evaluationsInitialState: EvaluationsState = {
+const InitialState: GuessesState = {
     evaluatedGuesses: [],
     nonEvaluatedGuesses:[],
 };
 export const guessesSlice = createSlice({
-    initialState: evaluationsInitialState,
+    initialState: InitialState,
     name: 'guesses',
     reducers: {
         addNonEvaluatedGuess(state, action: PayloadAction<string>) {
