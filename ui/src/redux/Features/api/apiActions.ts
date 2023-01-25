@@ -1,9 +1,9 @@
 import { createAction } from '@reduxjs/toolkit';
 
-interface ApiRequestPayload {
+export interface ApiRequestPayload {
     url: string;
     method: 'GET' | 'POST' | 'PUT' | 'DELETE';
-    data?: any;
+    body?: any;
     onSuccess: string;
     onError: string;
 }

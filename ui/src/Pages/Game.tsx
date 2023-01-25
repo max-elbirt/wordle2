@@ -1,9 +1,15 @@
-import { useAppDispatch, useAppSelector } from '../redux/hooks'
+import { useAppDispatch } from '../redux/hooks'
+import { useEffect } from 'react'
+import { keyboardClicked } from '../redux/Features/keyboard/keyboardActions'
 
 const Game = () => {
-    const dispatch = useAppDispatch();
-    const spinner = useAppSelector((state) => state.overlays.spinner);
-    return <h1>{spinner}</h1>;
-};
+    const dispatch = useAppDispatch()
+    useEffect(() => {
+        window.addEventListener('keyup', (e) => {
+            dispatch(keyboardClicked(e.key.toUpperCase()))
+        })
+    }, [])
+    return <h1>רן אלבז המלך🇷🇺</h1>
+}
 
-export default Game;
+export default Game
