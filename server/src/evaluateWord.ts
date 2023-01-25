@@ -1,6 +1,6 @@
-import {evalI} from '../../ui/Wordle2/redux/Features/evalSlice'
+import {EvaluatedGuess} from '../../ui/src/redux/Features/guesses/guessesSlice'
 
-export const evaluateWord = (word: string, e: evalI[]) => {
+export const evaluateWord = (word: string, e: Evaluation[]) => {
     return e.map((element) => {
         if (element.letter === word[element.index]) {
             element.correctness = 'correctPlace';
