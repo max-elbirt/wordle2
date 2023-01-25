@@ -1,25 +1,25 @@
-import { RootState } from '../../store';
-import { Dispatch, Middleware, MiddlewareAPI, PayloadAction } from '@reduxjs/toolkit';
-import { incomingGuess } from '../guesses/guessesActions';
-import { keyboardClicked } from './keyboardActions';
+import { RootState } from '../../store'
+import { Dispatch, Middleware, MiddlewareAPI, PayloadAction } from '@reduxjs/toolkit'
+import { incomingGuess } from '../guesses/guessesActions'
+import { keyboardClicked } from './keyboardActions'
 
 export function isLetter(input: string) {
-    return /^[A-Z]$/.test(input);
+    return /^[A-Z]$/.test(input)
 }
 
 export const keyboardClickFlow: Middleware = ({ getState, dispatch }: MiddlewareAPI) => (next: Dispatch) => (action: PayloadAction<string>) => {
-    next(action);
+    next(action)
     if (action.type === keyboardClicked.type) {
         //checks the type of the entered key
         //case latter -> if game is in progress -> dispatch incomingGuess
         //case backspace || enter-> if game is in progress -> dispatch closeModal
-        const enteredKey = action.payload;
-        const state = getState() as RootState;
+        const enteredKey = action.payload
+        const state = getState() as RootState
 
         /*******************    CASE I: KEY IS LETTER    *******************/
         if (isLetter(enteredKey)) {
             if (state.game.status === 'IN_PROGRESS') {
-                dispatch(incomingGuess(enteredKey));
+                dispatch(incomingGuess(enteredKey))
             }
         }
 
@@ -29,6 +29,6 @@ export const keyboardClickFlow: Middleware = ({ getState, dispatch }: Middleware
         /*******************    CASE I: KEY IS ENTER    *******************/
         //todo
     }
-};
+}
 
-export const keyboardMiddleware = [keyboardClickFlow];
+export const keyboardMiddleware = [keyboardClickFlow]
