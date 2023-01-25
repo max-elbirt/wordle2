@@ -1,6 +1,6 @@
 import {app} from '../index'
 import request from 'supertest';
-import { evalI } from '../../../ui/Wordle2/redux/Features/evalSlice';
+import { EvaluatedGuess } from '../../../ui/src/redux/Features/guesses/guessesSlice';
 
 const mockEvalArr:any = [{letter: 'J', index: 1, correctness: null, status: 'unchecked'}, {
     letter: 'M',
@@ -13,7 +13,7 @@ const mockEvalArr:any = [{letter: 'J', index: 1, correctness: null, status: 'unc
     correctness: null,
     status: 'unchecked'
 }];
-const mockAnswer: evalI[] = [{letter: 'J', index: 1, correctness: 'notInTargetWord', status: 'checked'}, {
+const mockAnswer: Evaluation[] = [{letter: 'J', index: 1, correctness: 'notInTargetWord', status: 'checked'}, {
     letter: 'M',
     index: 0,
     correctness: 'correctPlace',

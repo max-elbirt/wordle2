@@ -1,8 +1,8 @@
 import {evaluateWord} from "../evaluateWord";
-import {evalI} from '../../../ui/Wordle2/redux/Features/evalSlice'
+import {EvaluatedGuess} from '../../../ui/src/redux/Features/guesses/guessesSlice'
 import exp from "constants";
 
-const mockEvalArr: evalI[] = [{letter: 'J', index: 1, correctness: null, status: 'unchecked'}, {
+const mockEvalArr: Evaluation[] = [{letter: 'J', index: 1, correctness: null, status: 'unchecked'}, {
     letter: 'M',
     index: 0,
     correctness: null,
@@ -14,7 +14,7 @@ const mockEvalArr: evalI[] = [{letter: 'J', index: 1, correctness: null, status:
     status: 'unchecked'
 }];
 
-const mockAnswer: evalI[] = [{letter: 'J', index: 1, correctness: 'notInTargetWord', status: 'checked'}, {
+const mockAnswer: Evaluation[] = [{letter: 'J', index: 1, correctness: 'notInTargetWord', status: 'checked'}, {
     letter: 'M',
     index: 0,
     correctness: 'correctPlace',
