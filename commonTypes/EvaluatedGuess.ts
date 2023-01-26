@@ -3,3 +3,4 @@ export interface EvaluatedGuess {
     index: number,
     correctness: | 'correctPlace' | 'notInTargetWord' | 'incorrectPlace',
 }
+//
